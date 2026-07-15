@@ -379,6 +379,10 @@ const SNS_POSTS = {
   ig_qna_faq_new:  { label:'未経験FAQ', cls:'ig', url:'https://www.instagram.com/p/DZenY5Hk5lU/' },
   ig_qna_faq_sel:  { label:'選考FAQ', cls:'ig', url:'https://www.instagram.com/p/DSuC5kNj0cg/' },
   ig_qna_faq_eval: { label:'評価制度FAQ', cls:'ig', url:'https://www.instagram.com/p/DQL3K07E20E/' },
+  ig_jobs_sales_intv1: { label:'営業インタビュー①', cls:'ig', url:'https://www.instagram.com/reel/DR4AlpEE8TP/' },
+  ig_jobs_sales_intv2: { label:'営業インタビュー②', cls:'ig', url:'https://www.instagram.com/reel/DaCqeb3zFMh/' },
+  ig_jobs_koumu_intv:  { label:'工務インタビュー', cls:'ig', url:'https://www.instagram.com/reel/DViRcOME4l3/' },
+  ig_jobs_design_intv: { label:'設計インタビュー', cls:'ig', url:'https://www.instagram.com/reel/DQv4oTKE-9X/' },
   ig_jobs_sch_sales: { label:'営業職スケジュール', cls:'ig', url:'https://www.instagram.com/p/DNFkjajT0nE/' },
   yt_biz_model1:   { label:'モデルハウス紹介①', cls:'yt', url:'https://www.youtube.com/watch?v=d67v17is5Ck' },
   yt_biz_model2:   { label:'モデルハウス紹介②', cls:'yt', url:'https://www.youtube.com/watch?v=1XU7cuIv8xg' },
@@ -555,10 +559,10 @@ function renderCategoryQna(key){const cat=QNA[key];return`<div><h3 style="font-s
 
 // ===== SECTIONS =====
 const SECTIONS = [
-  {id:'business',photo:'./photo-business.jpg',name:'ビジネスモデル',nameEn:'Business Model',desc:'私たちがどうやって価値を生み出しているか',snsPosts:['ig_kai_company','ig_kai_kickoff','ig_rec_showroom','yt_biz_model1','yt_biz_model2'],
+  {id:'business',photo:'./photo-business.jpg',name:'ビジネスモデル',nameEn:'Business Model',desc:'私たちがどうやって価値を生み出しているか',snsPosts:['ig_kai_company','ig_kai_kickoff','yt_biz_model1','yt_biz_model2'],
    render:()=>`<h3>私たちの事業の仕組み</h3><p>1951年、材木屋として創業。「木の良さを伝える」というルーツを活かし、住宅会社へと進化しました。契約から引き渡し後まで、設計・施工・アフターフォローをすべて自社で完結。中間マージンをカットし、高品質な家を適正価格で届けています。</p><div class="info-grid"><div class="info-card"><div class="label">創業</div><div class="val">1951<span class="unit"> 年</span></div></div><div class="info-card"><div class="label">コミコミ価格</div><div class="val" style="font-size:15px">2,161<span class="unit"> 万円〜</span></div></div><div class="info-card"><div class="label">展示場数</div><div class="val">13<span class="unit"> 店舗</span></div></div><div class="info-card"><div class="label">年間施工</div><div class="val">200<span class="unit"> 棟以上</span></div></div></div><h3 style="margin-top:28px">4つのブランド</h3><ul><li><strong style="color:var(--text)">ナチュリエ</strong> — 無垢材・漆喰など自然素材にこだわった注文住宅</li><li><strong style="color:var(--text)">オンリーホーム</strong> — 電気代がかからないフル装備ローコスト住宅</li><li><strong style="color:var(--text)">シンプルホーム</strong> — 好立地×ハイコスパの新築建売住宅</li><li><strong style="color:var(--text)">WOODSPACE</strong> — 店舗・オフィスなど非住宅木造建築の専門ブランド</li></ul><h3 style="margin-top:28px">なぜリーズナブルなのか？</h3><ul><li>材木屋ルーツ — 材木屋時代に確立した仕入れルートで高品質な木材を安定調達</li><li>自社一貫体制 — 設計・施工・アフターまで自社完結で中間マージンを低減</li><li>年間200棟以上（全国上位0.6%） — 大量仕入れで設備費も削減</li><li>TVCMなし・自社完結 — 広告費を建築費に上乗せしない経営方針</li></ul>`
   },
-  {id:'jobs',photo:'./photo-jobs.jpg',name:'職種紹介',nameEn:'Job Types',desc:'各部署・ポジションの仕事内容を知る',snsPosts:['ig_kai_intern','ig_kai_1year','ig_kai_schedule_planner','ig_kai_schedule_koumu','ig_jobs_sch_sales','yt_day'],
+  {id:'jobs',photo:'./photo-jobs.jpg',name:'職種紹介',nameEn:'Job Types',desc:'各部署・ポジションの仕事内容を知る',snsPosts:['ig_kai_intern','ig_jobs_sales_intv1','ig_jobs_sales_intv2','ig_jobs_koumu_intv','ig_jobs_design_intv'],
    render:()=>`<h3>主な職種一覧</h3><p>当社では多様なキャリアパスが用意されています。</p><div class="tag-row"><span class="tag active">営業</span><span class="tag active">プランナー（インテリアコーディネーター）</span><span class="tag active">設計</span><span class="tag active">施工管理</span></div><ul style="margin-top:20px"><li><strong style="color:var(--text)">営業職</strong> — お客様のヒアリングから引き渡しまで伴走。商談は基本2名体制。定休：火・水</li><li><strong style="color:var(--text)">プランナー職</strong> — インテリア・間取りを提案するインテリアコーディネーター。定休：火・水</li><li><strong style="color:var(--text)">設計職</strong> — お客様の夢をCADで形に。一級建築士事務所在籍。定休：水・日</li><li><strong style="color:var(--text)">施工管理</strong> — 現場の品質・安全・工程を統括。資格取得支援あり。定時：8:30〜17:30、定休：水・日</li></ul><h3 style="margin-top:28px">キャリアパスのイメージ</h3><ul><li><strong style="color:var(--text)">入社後〜1年</strong> — 新人マインド研修・ロープレカリキュラム・勉強会・先輩同行で初契約</li><li><strong style="color:var(--text)">2〜4年目ごろ</strong> — 主任昇格・後輩OJT担当へ</li><li><strong style="color:var(--text)">4〜6年目ごろ</strong> — 副店長レベルへ</li><li><strong style="color:var(--text)">7〜10年目ごろ</strong> — 店長レベルへ（実例：小牧店 店長・福本和真 ／ 設計リーダー・棚橋花帆）</li></ul>`
   },
   {id:'benefits',photo:'./photo-benefits.jpg',name:'給与・福利厚生',nameEn:'Benefits',desc:'給与体系・休暇・各種手当など待遇の詳細',snsPosts:['ig_kai_baseball','ig_kai_mvp','ig_kai_trip','ig_kai_snow','ig_kai_golf','ig_kai_badminton','ig_kai_volleyball','ig_kai_bbq'],
