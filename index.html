@@ -216,15 +216,18 @@
     <div class="hub-grid" id="hubGrid"></div>
     <p style="margin-top:20px;font-size:12px;color:var(--text2);text-align:right;">✓ マーク = 閲覧済み</p>
     <a href="https://www.yamaka-holdings.jp/" target="_blank" rel="noopener"
-       style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding:24px 28px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);text-decoration:none;color:inherit;transition:transform .2s,border-color .2s;"
+       style="display:block;margin-top:24px;padding:0;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);text-decoration:none;color:inherit;transition:transform .2s,border-color .2s;overflow:hidden;"
        onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'"
        onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
-      <div>
-        <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px;">Company Site</div>
-        <div style="font-size:18px;font-weight:700;margin-bottom:4px;">コーポレートサイト</div>
-        <div style="font-size:13px;color:var(--text2);">公式サイトで会社・ブランドの世界観をチェックしよう。</div>
+      <img src="./photo-corporate.png" alt="ヤマカ木材 コーポレートサイト" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 28px;">
+        <div>
+          <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px;">Company Site</div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px;">コーポレートサイト</div>
+          <div style="font-size:13px;color:var(--text2);">公式サイトで会社・ブランドの世界観をチェックしよう。</div>
+        </div>
+        <div style="font-size:28px;color:var(--accent);margin-left:20px;flex-shrink:0;">→</div>
       </div>
-      <div style="font-size:28px;color:var(--accent);margin-left:20px;flex-shrink:0;">→</div>
     </a>
     <a href="https://www.yamakawood.co.jp/gallery/?back=194" target="_blank" rel="noopener"
        style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding:24px 28px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);box-shadow:var(--shadow);transition:transform .3s,border-color .3s;"
@@ -361,7 +364,7 @@ const SNS_POSTS = {
   ig_kai_schedule_planner: { label:'プランナースケジュール', cls:'ig', url:'https://www.instagram.com/p/DRB6UPMEyRC/' },
   ig_kai_credo:   { label:'10のCREDO', cls:'ig', url:'https://www.instagram.com/p/DT2IDswkznu/' },
   ig_kai_mvp:     { label:'MVP表彰式', cls:'ig', url:'https://www.instagram.com/p/DTkGduAEzwg/' },
-  ig_kai_trip:    { label:'研修旅行（費用会社持ち）', cls:'ig', url:'https://www.instagram.com/p/DScAO8ZEwmR/' },
+  ig_kai_trip:    { label:'研修旅行！', cls:'ig', url:'https://www.instagram.com/p/DScAO8ZEwmR/' },
   ig_kai_snow:    { label:'スノボ（3Y活動）', cls:'ig', url:'https://www.instagram.com/p/DUsMxcfE85A/' },
   ig_kai_bbq:     { label:'内定者BBQ', cls:'ig', url:'https://www.instagram.com/p/DWGUnsZk7mC/' },
   ig_kai_schedule_koumu: { label:'工務職スケジュール', cls:'ig', url:'https://www.instagram.com/reel/DaUsB_ETtQz/' },
