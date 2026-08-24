@@ -273,20 +273,7 @@
         </div>
         <div style="margin-left:auto;font-size:20px;color:var(--accent);">↓</div>
       </a>
-      <div onclick="copyMailTemplate(this)" role="button" tabindex="0"
-         style="display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius);color:inherit;cursor:pointer;transition:transform .2s,border-color .2s;"
-         onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'"
-         onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
-        <div style="width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:.2em;color:var(--accent2);margin-bottom:4px;">MAIL TEMPLATE</div>
-          <div style="font-size:15px;font-weight:700;">役員面接 案内メール</div>
-          <div class="mail-copy-sub" style="font-size:12px;color:var(--text2);margin-top:2px;">クリックでコピー</div>
-        </div>
-        <div class="mail-copy-icon" style="margin-left:auto;font-size:20px;color:var(--accent);">📋</div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -639,15 +626,7 @@ function switchDayJob(type,btn){
   ['sales','planner','design','construction'].forEach(t=>{const el=document.getElementById('day-'+t);if(el)el.style.display=t===type?'block':'none';});
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();});
-function copyMailTemplate(el) {
-  const text = `次回の役員面接につきまして、詳細が決まりましたので案内を送りします。\nご確認よろしくお願いいたします。\n\n【内容】役員面接\n【日程】〇月〇日（〇）\n【時間】：~：\n※10分前には集合をお願いします。\n【開催】zoomで行います\nhttps://us06web.zoom.us/j/7301966288?pwd=YnpVZU9oa3lkL2d6V0FzNXQrVSszdz09\nミーティング ID: 730 196 6288\nパスコード: 8ydAzD\n【服装】スーツ\n【宿題】写真付きエントリーシートのアップロード（面接の「一週間前」までにMY PAGE⇒ファイル登録情報からアップロードをお願いいたします）\n【持ち物】エントリーシート（写真付き）、筆記用具、メモ帳\n\n※逆質問もございますので、あらかじめ2、3個質問を考えておいてください\n\n－－－－－－－－－－－－－－－\n◣重要◥\t\n今回は営業スタッフの一日密着動画です！\n仕事内容はもちろん、店舗のリアルな雰囲気もよく分かるので、忘れずにご覧ください！\n《営業一日密着！》\nhttps://youtu.be/zrOQ7NGb6ug\n－－－－－－－－－－－－－－－`;
-  navigator.clipboard.writeText(text).then(() => {
-    const icon = el.querySelector('.mail-copy-icon');
-    const sub = el.querySelector('.mail-copy-sub');
-    if (icon) { icon.textContent = '✓ コピーしました'; setTimeout(() => { icon.textContent = '📋'; }, 2000); }
-    if (sub) { sub.textContent = 'コピーしました！'; setTimeout(() => { sub.textContent = 'クリックでコピー'; }, 2000); }
-  });
-}
+
 </script>
 
 </body>
