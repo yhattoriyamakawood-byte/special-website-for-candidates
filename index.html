@@ -380,15 +380,15 @@ const SNS_POSTS = {
   ig_jobs_design_intv: { label:'設計インタビュー', cls:'ig', url:'https://www.instagram.com/reel/DQv4oTKE-9X/' },
   ig_jobs_design_intern: { label:'設計インターン', cls:'ig', url:'https://www.instagram.com/reel/DcA1aj_Tllw/' },
   ig_jobs_sch_sales: { label:'営業職スケジュール', cls:'ig', url:'https://www.instagram.com/p/DNFkjajT0nE/' },
-  ig_biz_roomtour1: { label:'ルームツアー(ショート) ①', cls:'ig', url:'https://www.instagram.com/reel/DSt0D1_E0Tt/' },
-  ig_biz_roomtour2: { label:'ルームツアー(ショート) ②', cls:'ig', url:'https://www.instagram.com/reel/DWlOFjFvWnz/' },
+  ig_biz_roomtour1: { label:'ルームツアー(ショート) ①', cls:'ig', url:'https://www.instagram.com/reel/DSt0D1_E0Tt/', badge:'おすすめ' },
+  ig_biz_roomtour2: { label:'ルームツアー(ショート) ②', cls:'ig', url:'https://www.instagram.com/reel/DWlOFjFvWnz/', badge:'おすすめ' },
   yt_biz_model1:   { label:'▶ モデルハウス紹介①', cls:'yt', url:'https://www.youtube.com/watch?v=d67v17is5Ck' },
   yt_biz_model2:   { label:'▶ モデルハウス紹介②', cls:'yt', url:'https://www.youtube.com/watch?v=1XU7cuIv8xg' },
   yt_culture_intv: { label:'▶ 中途インタビュー', cls:'yt', url:'https://www.youtube.com/watch?v=ay3420yELFw&t=5s' },
   ig_rec_team:    { label:'採用チーム紹介', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DJWH9gVTFho/' },
   ig_culture_avg_age: { label:'平均年齢', cls:'ig', url:'https://www.instagram.com/p/DcS2_o7kwpc/' },
 };
-function snsPostBtn(key){ const s=SNS_POSTS[key]; return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`; }
+function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="display:inline-block;background:#f59e0b;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:middle;letter-spacing:.05em;">${s.badge}</span>`:''; return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener">${s.label}${badge}</a>`; }
 
 // ===== Q&A DATA =====
 const QNA = {
