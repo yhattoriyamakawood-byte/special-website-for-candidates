@@ -392,7 +392,16 @@ const SNS_POSTS = {
   ig_rec_team:    { label:'採用チーム紹介', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DJWH9gVTFho/' },
   ig_culture_avg_age: { label:'平均年齢', cls:'ig', url:'https://www.instagram.com/p/DcS2_o7kwpc/' },
 };
-function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="position:absolute;top:-7px;left:-4px;background:#f59e0b;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;opacity:0.6;letter-spacing:.05em;white-space:nowrap;">${s.badge}</span>`:''; const pos=s.badge?'position:relative;overflow:visible;':''; return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener" style="${pos}">${badge}${s.label}</a>`; }
+function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="position:absolute;top:-7px;left:-4px;background:#f59e0b;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;opacity:0.6;letter-spacing:.05em;white-space:nowrap;">${s.badge}</span>`:''; const pos=s.badge?'position:relative;overflow:visible;':'';
+  const gid='ig'+key;
+  const igLogo=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><defs><radialGradient id="${gid}" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#${gid})"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>`;
+  const ytLogo=`<svg width="16" height="11" viewBox="0 0 20 14" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><path d="M19.6 2.2C19.37 1.34 18.7.66 17.85.44 16.4 0 10 0 10 0S3.6 0 2.15.44C1.3.66.63 1.34.4 2.2 0 3.7 0 7 0 7s0 3.3.4 4.8c.23.86.9 1.54 1.75 1.76C3.6 14 10 14 10 14s6.4 0 7.85-.44c.85-.22 1.52-.9 1.75-1.76C20 10.3 20 7 20 7s0-3.3-.4-4.8z" fill="#FF0000"/><polygon points="8,10.5 14.5,7 8,3.5" fill="white"/></svg>`;
+  const ytShortLogo=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><rect width="24" height="24" rx="5" fill="#FF0000"/><path d="M15.5 8.3a3.5 3.5 0 0 0-4.9 0l-1.1 1.1A3.5 3.5 0 0 0 14.4 14l1-1a3.5 3.5 0 0 0 0-4.7z" fill="white"/><path d="M8.5 15.7a3.5 3.5 0 0 0 4.9 0l1.1-1.1A3.5 3.5 0 0 0 9.6 10l-1 1a3.5 3.5 0 0 0 0 4.7z" fill="white"/></svg>`;
+  let logo='';
+  if(s.cls==='ig') logo=igLogo;
+  else if(s.cls==='yt-short') logo=ytShortLogo;
+  else if(s.cls==='yt') logo=ytLogo;
+  return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener" style="${pos}">${badge}${logo}${s.label}</a>`; }
 
 // ===== Q&A DATA =====
 const QNA = {
