@@ -396,7 +396,7 @@ function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span sty
   if(s.cls==='ig') logo=igLogo;
   else if(s.cls==='yt-short') logo=ytShortLogo;
   else if(s.cls==='yt') logo=ytLogo;
-  const _l=s.label.replace(/[（(]/g,v=>'<br>'+v);const _sm=['木の温もりに包まれたお家','心地よく過ごせるお家','プランナースケジュール'].includes(s.label);return `<a class="modal-sns-btn ${s.cls}${_sm?' sm-text':''}" href="${s.url}" target="_blank" rel="noopener" style="${pos}">${badge}${logo}${_l}</a>`; }
+  const _l=s.label.replace(/[\uFF08(]/g,function(v){return '<br>'+v;});const _sm=['\u6728\u306e\u6e29\u3082\u308a\u306b\u5305\u307e\u308c\u305f\u304a\u5bb6','\u5fc3\u5730\u3088\u304f\u904e\u3054\u305b\u308b\u304a\u5bb6','\u30d7\u30e9\u30f3\u30ca\u30fc\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb'].includes(s.label);const _cls='modal-sns-btn '+s.cls+(_sm?' sm-text':'');return '<a class="'+_cls+'" href="'+s.url+'" target="_blank" rel="noopener" style="'+pos+'">'+badge+logo+_l+'</a>'; }
     {q:'Q1. 入社後、最初に担当する仕事は何ですか？', a:'入社直後は研修を受け、その後はロープレや同行でお客様との接し方を学びます。<br>いきなり一人で提案するのではなく、まずは「先輩のサポート役」として現場に慣れていただきます。'},
     {q:'Q2. 初契約を取るまでの平均期間は？', a:'平均すると入社6か月〜1年で最初の契約をいただく人が多いです。<br>もちろん個人差はありますが、会社としては「最初の成功体験」を全力で支援しています。'},
     {q:'Q3. 研修期間はどれくらいですか？内容は？', a:'最初の研修は2週間ほどで修了し、その後は配属先で経験を積みながら月に1回のペースで開催します。<br>土地・建物・お金に関することや、活躍し続けるために必要なマインドを1から学んでいけます。'},
