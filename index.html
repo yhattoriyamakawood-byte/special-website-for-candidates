@@ -612,7 +612,7 @@ function closeModalDirect(){document.getElementById('modalOverlay').classList.re
 
 // ===== PROGRESS =====
 function updateProgress(){
-  document.getElementById('progressDots').innerHTML=SECTIONS.map(s=>`<div class="progress-dot ${visited.includes(s.id)?'done':''}"></div>`).join('');
+  const _pd=document.getElementById('progressDots');if(_pd)_pd.innerHTML=SECTIONS.map(s=>`<div class="progress-dot ${visited.includes(s.id)?'done':''}"></div>`).join('');
   document.getElementById('visitedCount').textContent=visited.length;
 }
 
