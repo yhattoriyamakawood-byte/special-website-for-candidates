@@ -92,7 +92,7 @@
   .modal-sns-footer{padding:24px 32px 32px;border-top:1px solid var(--border);background:var(--bg2);}
   .modal-sns-label{font-size:10px;letter-spacing:.3em;color:var(--accent2);text-transform:uppercase;margin-bottom:14px;display:block;font-weight:700;}
   .modal-sns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;}
-  .modal-sns-btn{display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;line-height:1.4;min-height:40px;}
+  .modal-sns-btn{display:flex;align-items:center;justify-content:flex-start;text-align:left;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;line-height:1.4;min-height:40px;}
   .modal-sns-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1);}
   .modal-sns-btn.yt{background:#fff0f0;color:#cc0000;border:1px solid #ffcccc;}
   .modal-sns-btn.ig{background:#fff0f8;color:#c2185b;border:1px solid #f0c0d8;}
@@ -337,9 +337,9 @@
 <script>
 // ===== SNS LINKS =====
 const SNS_POSTS = {
-  yt_day:      { label:'▶ 営業 1日密着動画', cls:'yt', url:'https://www.youtube.com/watch?v=zrOQ7NGb6ug', badge:'おすすめ' },
-  yt_mid:      { label:'▶ 中途社員インタビュー動画', cls:'yt', url:'https://www.youtube.com/watch?v=ay3420yELFw' },
-  yt_interview:{ label:'▶ 役員面接官インタビュー動画', cls:'yt', url:'https://www.youtube.com/watch?v=0Cxp-af8HBk' },
+  yt_day:      { label:'営業 1日密着動画', cls:'yt', url:'https://www.youtube.com/watch?v=zrOQ7NGb6ug', badge:'おすすめ' },
+  yt_mid:      { label:'中途社員インタビュー動画', cls:'yt', url:'https://www.youtube.com/watch?v=ay3420yELFw' },
+  yt_interview:{ label:'役員面接官インタビュー動画', cls:'yt', url:'https://www.youtube.com/watch?v=0Cxp-af8HBk' },
   ig_kai_company: { label:'会社紹介', cls:'ig', url:'https://www.instagram.com/yamaka.saiyou.kai/p/DJVuSeHzE0c/' },
   ig_kai_flow:    { label:'選考フロー', cls:'ig', url:'https://www.instagram.com/yamaka.saiyou.kai/p/DWh0iVVk3Bb/' },
   ig_kai_entry:   { label:'エントリー案内', cls:'ig', url:'https://www.instagram.com/yamaka.saiyou.kai/p/DWhzP-SE7uO/' },
@@ -386,17 +386,17 @@ const SNS_POSTS = {
   ig_biz_wood_warmth:{ label:'木の温もりに包まれたお家', cls:'ig', url:'https://www.instagram.com/p/DZq2FwdjePr/' },
   ig_biz_bedroom:   { label:'寝室まとめ', cls:'ig', url:'https://www.instagram.com/p/DY0xZfLjX4-/' },
   ig_biz_cozy:      { label:'心地よく過ごせるお家', cls:'ig', url:'https://www.instagram.com/p/DUUYYJ1gdYQ/' },
-  yt_biz_model1:   { label:'▶ モデルハウス紹介①', cls:'yt', url:'https://www.youtube.com/watch?v=d67v17is5Ck' },
-  yt_biz_model2:   { label:'▶ モデルハウス紹介②', cls:'yt', url:'https://www.youtube.com/watch?v=1XU7cuIv8xg' },
-  yt_culture_intv: { label:'▶ 中途インタビュー', cls:'yt', url:'https://www.youtube.com/watch?v=ay3420yELFw&t=5s', badge:'おすすめ' },
+  yt_biz_model1:   { label:'モデルハウス紹介①', cls:'yt', url:'https://www.youtube.com/watch?v=d67v17is5Ck' },
+  yt_biz_model2:   { label:'モデルハウス紹介②', cls:'yt', url:'https://www.youtube.com/watch?v=1XU7cuIv8xg' },
+  yt_culture_intv: { label:'中途インタビュー', cls:'yt', url:'https://www.youtube.com/watch?v=ay3420yELFw&t=5s', badge:'おすすめ' },
   ig_rec_team:    { label:'採用チーム紹介', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DJWH9gVTFho/' },
   ig_culture_avg_age: { label:'平均年齢', cls:'ig', url:'https://www.instagram.com/p/DcS2_o7kwpc/' },
 };
 function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="position:absolute;top:-7px;left:-4px;background:#f59e0b;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;opacity:0.6;letter-spacing:.05em;white-space:nowrap;">${s.badge}</span>`:''; const pos=s.badge?'position:relative;overflow:visible;':'';
   const gid='ig'+key;
-  const igLogo=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><defs><radialGradient id="${gid}" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#${gid})"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>`;
-  const ytLogo=`<svg width="16" height="11" viewBox="0 0 20 14" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><path d="M19.6 2.2C19.37 1.34 18.7.66 17.85.44 16.4 0 10 0 10 0S3.6 0 2.15.44C1.3.66.63 1.34.4 2.2 0 3.7 0 7 0 7s0 3.3.4 4.8c.23.86.9 1.54 1.75 1.76C3.6 14 10 14 10 14s6.4 0 7.85-.44c.85-.22 1.52-.9 1.75-1.76C20 10.3 20 7 20 7s0-3.3-.4-4.8z" fill="#FF0000"/><polygon points="8,10.5 14.5,7 8,3.5" fill="white"/></svg>`;
-  const ytShortLogo=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:4px;flex-shrink:0;"><rect width="24" height="24" rx="5" fill="#FF0000"/><path d="M15.5 8.3a3.5 3.5 0 0 0-4.9 0l-1.1 1.1A3.5 3.5 0 0 0 14.4 14l1-1a3.5 3.5 0 0 0 0-4.7z" fill="white"/><path d="M8.5 15.7a3.5 3.5 0 0 0 4.9 0l1.1-1.1A3.5 3.5 0 0 0 9.6 10l-1 1a3.5 3.5 0 0 0 0 4.7z" fill="white"/></svg>`;
+  const igLogo=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;"><defs><radialGradient id="${gid}" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#${gid})"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>`;
+  const ytLogo=`<svg width="22" height="16" viewBox="0 0 20 14" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;"><path d="M19.6 2.2C19.37 1.34 18.7.66 17.85.44 16.4 0 10 0 10 0S3.6 0 2.15.44C1.3.66.63 1.34.4 2.2 0 3.7 0 7 0 7s0 3.3.4 4.8c.23.86.9 1.54 1.75 1.76C3.6 14 10 14 10 14s6.4 0 7.85-.44c.85-.22 1.52-.9 1.75-1.76C20 10.3 20 7 20 7s0-3.3-.4-4.8z" fill="#FF0000"/><polygon points="8,10.5 14.5,7 8,3.5" fill="white"/></svg>`;
+  const ytShortLogo=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;"><rect width="24" height="24" rx="5" fill="#FF0000"/><path d="M15.5 8.3a3.5 3.5 0 0 0-4.9 0l-1.1 1.1A3.5 3.5 0 0 0 14.4 14l1-1a3.5 3.5 0 0 0 0-4.7z" fill="white"/><path d="M8.5 15.7a3.5 3.5 0 0 0 4.9 0l1.1-1.1A3.5 3.5 0 0 0 9.6 10l-1 1a3.5 3.5 0 0 0 0 4.7z" fill="white"/></svg>`;
   let logo='';
   if(s.cls==='ig') logo=igLogo;
   else if(s.cls==='yt-short') logo=ytShortLogo;
