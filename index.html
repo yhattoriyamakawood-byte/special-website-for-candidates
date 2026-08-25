@@ -30,7 +30,7 @@
   .hero-label{display:inline-block;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#e8c98e;border:1px solid #e8c98e;padding:5px 14px;margin-bottom:24px;}
   .hero-title{font-size:clamp(30px,5vw,60px);font-weight:300;line-height:1.2;letter-spacing:.04em;color:#fff;margin-bottom:20px;}
   .hero-title strong{font-weight:700;color:#e8c98e;}
-  .hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:480px;margin-bottom:40px;}
+  .hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:480px;margin-bottom:40px;line-break:strict;word-break:keep-all;}
   .hero-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;background:var(--accent);color:#fff;font-size:13px;letter-spacing:.15em;text-decoration:none;transition:background .3s;border-radius:2px;}
   .hero-cta:hover{background:var(--accent2);}
   section{padding:100px 40px;}
@@ -90,7 +90,7 @@
   .tag{padding:5px 14px;border:1.5px solid var(--border);border-radius:100px;font-size:12px;color:var(--text2);}
   .tag.active{border-color:var(--accent);color:var(--accent);}
   .modal-sns-footer{padding:24px 32px 32px;border-top:1px solid var(--border);background:var(--bg2);}
-  .modal-back-bar{position:sticky;bottom:0;padding:12px 20px;background:var(--bg);border-top:1px solid var(--border);display:flex;justify-content:center;z-index:10;}
+  .modal-back-bar{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:var(--bg);border-top:1px solid var(--border);display:none;justify-content:center;z-index:10000;}
   .modal-back-bar button{display:flex;align-items:center;gap:6px;padding:10px 28px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:20px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;transition:all .2s;}
   .modal-back-bar button:hover{border-color:var(--accent);color:var(--accent);}
   .modal-sns-label{font-size:10px;letter-spacing:.3em;color:var(--accent2);text-transform:uppercase;margin-bottom:14px;display:block;font-weight:700;}
@@ -180,7 +180,7 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
   .fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
   .fade-in.visible{opacity:1;transform:translateY(0);}
-  @media(max-width:640px){header{padding:14px 20px;}section{padding:70px 20px;}.hero-content{padding:60px 24px;}.modal-body{padding:24px 20px 40px;}.info-grid{grid-template-columns:1fr;}.modal-sns-footer{padding:16px 20px;}.cat-grid{grid-template-columns:repeat(2,1fr);}.modal-sns-grid{grid-template-columns:1fr 1fr;}.modal-sns-btn{font-size:13px;padding:10px 10px;}}
+  @media(max-width:640px){header{padding:14px 20px;}section{padding:70px 20px;}.hero-content{padding:60px 24px;}.hero-sub{font-size:13px;}.modal-body{padding:24px 20px 40px;}.info-grid{grid-template-columns:1fr;}.modal-sns-footer{padding:16px 20px;}.cat-grid{grid-template-columns:repeat(2,1fr);}.modal-sns-grid{grid-template-columns:1fr;}.modal-sns-btn{font-size:12px;padding:9px 12px;}}
   .day-job-tab{padding:8px 20px;border:1.5px solid var(--border);border-radius:100px;background:var(--card-bg);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;}
   .day-job-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
   .day-job-tab:hover:not(.active){border-color:var(--accent2);color:var(--accent);}
@@ -575,7 +575,7 @@ function renderCategoryQna(key){const cat=QNA[key];return`<div><h3 style="font-s
 
 // ===== SECTIONS =====
 const SECTIONS = [
-  {id:'business',photo:'./photo-business.jpg',name:'ビジネスモデル',nameEn:'Business Model',desc:'私たちがどうやって価値を生み出しているか',snsPosts:['ig_biz_roomtour1','ig_biz_roomtour2','ig_biz_vaulted','ig_biz_wood_warmth','ig_biz_bedroom','ig_biz_cozy','yt_biz_model1','yt_biz_model2'],
+  {id:'business',photo:'./photo-business.jpg',name:'商品紹介',nameEn:'Product Introduction',desc:'私たちがどうやって価値を生み出しているか',snsPosts:['ig_biz_roomtour1','ig_biz_roomtour2','ig_biz_vaulted','ig_biz_wood_warmth','ig_biz_bedroom','ig_biz_cozy','yt_biz_model1','yt_biz_model2'],
    render:()=>`<h3>私たちの事業の仕組み</h3><p>1951年、材木屋として創業。「木の良さを伝える」というルーツを活かし、住宅会社へと進化しました。契約から引き渡し後まで、設計・施工・アフターフォローをすべて自社で完結。中間マージンをカットし、高品質な家を適正価格で届けています。</p><div class="info-grid"><div class="info-card"><div class="label">創業</div><div class="val">1951<span class="unit"> 年</span></div></div><div class="info-card"><div class="label">コミコミ価格</div><div class="val" style="font-size:15px">2,161<span class="unit"> 万円〜</span></div></div><div class="info-card"><div class="label">展示場数</div><div class="val">13<span class="unit"> 店舗</span></div></div><div class="info-card"><div class="label">年間施工</div><div class="val">200<span class="unit"> 棟以上</span></div></div></div><h3 style="margin-top:28px">4つのブランド</h3><ul><li><strong style="color:var(--text)">ナチュリエ</strong> — 無垢材・漆喰など自然素材にこだわった注文住宅</li><li><strong style="color:var(--text)">オンリーホーム</strong> — 電気代がかからないフル装備ローコスト住宅</li><li><strong style="color:var(--text)">シンプルホーム</strong> — 好立地×ハイコスパの新築建売住宅</li><li><strong style="color:var(--text)">WOODSPACE</strong> — 店舗・オフィスなど非住宅木造建築の専門ブランド</li></ul><h3 style="margin-top:28px">なぜリーズナブルなのか？</h3><ul><li>材木屋ルーツ — 材木屋時代に確立した仕入れルートで高品質な木材を安定調達</li><li>自社一貫体制 — 設計・施工・アフターまで自社完結で中間マージンを低減</li><li>年間200棟以上（全国上位0.6%） — 大量仕入れで設備費も削減</li><li>TVCMなし・自社完結 — 広告費を建築費に上乗せしない経営方針</li></ul>`
   },
   {id:'jobs',photo:'./photo-jobs.jpg',name:'職種紹介',nameEn:'Job Types',desc:'各部署・ポジションの仕事内容を知る',snsPosts:['ig_jobs_sales_intv1','ig_jobs_sales_intv2','ig_jobs_sales_intv3','ig_jobs_koumu_intv','ig_jobs_design_intv','ig_jobs_design_intern'],
@@ -615,10 +615,11 @@ function openModal(id){
   } else{snsEl.style.display='none';}
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
+  document.querySelector('.modal-back-bar').style.display='flex';
   document.querySelector(`[data-id="${id}"]`).classList.add('visited');
 }
 function closeModal(e){if(e.target===document.getElementById('modalOverlay'))closeModalDirect();}
-function closeModalDirect(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModalDirect(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';document.querySelector('.modal-back-bar').style.display='none';}
 
 // ===== PROGRESS =====
 function updateProgress(){
