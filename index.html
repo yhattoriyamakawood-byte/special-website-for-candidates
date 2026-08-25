@@ -613,7 +613,7 @@ function closeModalDirect(){document.getElementById('modalOverlay').classList.re
 // ===== PROGRESS =====
 function updateProgress(){
   const _pd=document.getElementById('progressDots');if(_pd)_pd.innerHTML=SECTIONS.map(s=>`<div class="progress-dot ${visited.includes(s.id)?'done':''}"></div>`).join('');
-  document.getElementById('visitedCount').textContent=visited.length;
+  const _vc=document.getElementById('visitedCount');if(_vc)_vc.textContent=visited.length;
 }
 
 // ===== RENDER HUB =====
