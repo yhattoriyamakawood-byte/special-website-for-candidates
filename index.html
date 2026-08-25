@@ -388,7 +388,7 @@ const SNS_POSTS = {
   ig_rec_team:    { label:'採用チーム紹介', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DJWH9gVTFho/' },
   ig_culture_avg_age: { label:'平均年齢', cls:'ig', url:'https://www.instagram.com/p/DcS2_o7kwpc/' },
 };
-function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="display:inline-block;background:#f59e0b;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:middle;letter-spacing:.05em;">${s.badge}</span>`:''; return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener">${s.label}${badge}</a>`; }
+function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span style="position:absolute;top:-7px;left:-4px;background:#f59e0b;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;opacity:0.6;letter-spacing:.05em;white-space:nowrap;">${s.badge}</span>`:''; const pos=s.badge?'position:relative;overflow:visible;':''; return `<a class="modal-sns-btn ${s.cls}" href="${s.url}" target="_blank" rel="noopener" style="${pos}">${badge}${s.label}</a>`; }
 
 // ===== Q&A DATA =====
 const QNA = {
