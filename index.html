@@ -73,6 +73,8 @@
   .hub-rec-badge{font-size:9px;font-weight:700;color:#92610a;letter-spacing:.05em;margin-bottom:2px;}
   .hub-rec-name{font-size:11px;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .hub-rec-other{font-size:10px;color:var(--text2);margin-top:6px;}
+  .back-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(28,26,23,.88);color:#fff;font-size:13px;padding:10px 20px;border-radius:100px;white-space:nowrap;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
+  .back-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   .modal-overlay{position:fixed;inset:0;background:rgba(28,26,23,.65);z-index:800;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
   .modal-overlay.open{opacity:1;pointer-events:all;}
   .modal{background:var(--bg);border-radius:var(--radius) var(--radius) 0 0;border:1px solid var(--border);border-bottom:none;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;overscroll-behavior-y:contain;transform:translateY(100%);transition:transform .42s cubic-bezier(.16,1,.3,1);}
@@ -407,7 +409,7 @@ function snsPostBtn(key){ const s=SNS_POSTS[key]; const badge=s.badge?`<span sty
   if(s.cls==='ig') logo=igLogo;
   else if(s.cls==='yt-short') logo=ytShortLogo;
   else if(s.cls==='yt') logo=ytLogo;
-  const _l=s.label.replace(/[\uFF08(]/g,function(v){return '<br>'+v;});const _sm=['\u6728\u306e\u6e29\u3082\u308a\u306b\u5305\u307e\u308c\u305f\u304a\u5bb6','\u5fc3\u5730\u3088\u304f\u904e\u3054\u305b\u308b\u304a\u5bb6','\u30d7\u30e9\u30f3\u30ca\u30fc\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb'].includes(s.label);const _cls='modal-sns-btn '+s.cls+(_sm?' sm-text':'');return '<a class="'+_cls+'" href="'+s.url+'" rel="noopener" style="'+pos+'">'+badge+logo+_l+'</a>'; }
+  const _l=s.label.replace(/[\uFF08(]/g,function(v){return '<br>'+v;});const _sm=['\u6728\u306e\u6e29\u3082\u308a\u306b\u5305\u307e\u308c\u305f\u304a\u5bb6','\u5fc3\u5730\u3088\u304f\u904e\u3054\u305b\u308b\u304a\u5bb6','\u30d7\u30e9\u30f3\u30ca\u30fc\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb'].includes(s.label);const _cls='modal-sns-btn '+s.cls+(_sm?' sm-text':'');return '<a class="'+_cls+'" href="'+s.url+'" rel="noopener" onclick="showBackHint()" style="'+pos+'">'+badge+logo+_l+'</a>'; }
 const QNA = {
   career:{ label:'入社後の仕事・キャリア', icon:'<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>', items:[
     {q:'Q1. 入社後、最初に担当する仕事は何ですか？', a:'入社直後は研修を受け、その後はロープレや同行でお客様との接し方を学びます。<br>いきなり一人で提案するのではなく、まずは「先輩のサポート役」として現場に慣れていただきます。'},
@@ -628,6 +630,10 @@ function updateProgress(){
 }
 
 // ===== RENDER HUB =====
+function showBackHint(){
+  let t=document.getElementById('backToast');if(!t){t=document.createElement('div');t.id='backToast';t.className='back-toast';t.textContent='動画後は画面下の ＜ で特設サイトに戻れます';document.body.appendChild(t);}
+  t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),3000);
+}
 function recThumbs(s){
   const recs=(s.snsPosts||[]).filter(k=>SNS_POSTS[k]&&SNS_POSTS[k].badge==='おすすめ');
   if(!recs.length) return '';
@@ -639,7 +645,7 @@ function recThumbs(s){
     :`<div class="hub-rec-ig-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="white" fill-opacity=".25"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg></div>`;
   const typeLabel=rec.cls==='yt'?'おすすめ動画':'おすすめ投稿';
   const otherText=others>0?`<div class="hub-rec-other">他${others}件の関連コンテンツ</div>`:'';
-  return `<div class="hub-rec-wrap"><a class="hub-rec-banner" href="${rec.url}" rel="noopener" onclick="event.stopPropagation()">${thumb}<div class="hub-rec-info"><div class="hub-rec-badge">★ ${typeLabel}</div><div class="hub-rec-name">${rec.label}</div></div></a>${otherText}</div>`;
+  return `<div class="hub-rec-wrap"><a class="hub-rec-banner" href="${rec.url}" rel="noopener" onclick="event.stopPropagation();showBackHint()">${thumb}<div class="hub-rec-info"><div class="hub-rec-badge">★ ${typeLabel}</div><div class="hub-rec-name">${rec.label}</div></div></a>${otherText}</div>`;
 }
 function renderHub(){
   document.getElementById('hubGrid').innerHTML=SECTIONS.map((s,i)=>`<div class="hub-card ${visited.includes(s.id)?'visited':''}" data-id="${s.id}" onclick="openModal('${s.id}')"><div class="hub-photo"><img src="${s.photo}" alt="${s.name}" loading="lazy"><div class="hub-photo-num">0${i+1}</div><div class="hub-badge">✓</div></div><div class="hub-body"><div class="hub-name">${s.name}</div><div class="hub-name-en">${s.nameEn}</div><div class="hub-desc">${s.desc}</div><div class="hub-arrow">詳しく見る →</div></div>${recThumbs(s)}</div>`).join('');
