@@ -73,8 +73,8 @@
   .hub-rec-badge{font-size:9px;font-weight:700;color:#92610a;letter-spacing:.05em;margin-bottom:2px;}
   .hub-rec-name{font-size:11px;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .hub-rec-other{font-size:10px;color:var(--text2);margin-top:6px;}
-  .back-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(28,26,23,.88);color:#fff;font-size:13px;padding:10px 20px;border-radius:100px;white-space:nowrap;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
-  .back-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .back-toast{position:fixed;bottom:0;left:0;right:0;background:#f59e0b;color:#1c1a17;font-size:14px;font-weight:700;padding:14px 20px 28px;text-align:center;z-index:9999;opacity:0;transform:translateY(100%);transition:opacity .3s,transform .35s cubic-bezier(.16,1,.3,1);pointer-events:none;line-height:1.5;}
+  .back-toast.show{opacity:1;transform:translateY(0);}
   .modal-overlay{position:fixed;inset:0;background:rgba(28,26,23,.65);z-index:800;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
   .modal-overlay.open{opacity:1;pointer-events:all;}
   .modal{background:var(--bg);border-radius:var(--radius) var(--radius) 0 0;border:1px solid var(--border);border-bottom:none;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;overscroll-behavior-y:contain;transform:translateY(100%);transition:transform .42s cubic-bezier(.16,1,.3,1);}
@@ -631,7 +631,7 @@ function updateProgress(){
 
 // ===== RENDER HUB =====
 function showBackHint(url){
-  let t=document.getElementById('backToast');if(!t){t=document.createElement('div');t.id='backToast';t.className='back-toast';t.textContent='動画後は画面下の ＜ で特設サイトに戻れます';document.body.appendChild(t);}
+  let t=document.getElementById('backToast');if(!t){t=document.createElement('div');t.id='backToast';t.className='back-toast';t.innerHTML='👆 動画を見たら<br>画面下の <strong style="font-size:18px;"> ＜ </strong> で特設サイトに戻れます';document.body.appendChild(t);}
   t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>{t.classList.remove('show');location.href=url;},2500);
 }
 function recThumbs(s){
