@@ -631,6 +631,7 @@ function updateProgress(){
 
 // ===== RENDER HUB =====
 function showBackHint(url){
+  sessionStorage.setItem('ymk_scrollY',window.scrollY);
   let t=document.getElementById('backToast');if(!t){t=document.createElement('div');t.id='backToast';t.className='back-toast';t.innerHTML='👆 動画を見たら<br>画面下の <strong style="font-size:18px;"> ＜ </strong> で特設サイトに戻れます';document.body.appendChild(t);}
   t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>{t.classList.remove('show');location.href=url;},2500);
 }
@@ -656,7 +657,7 @@ function countUp(el){const target=parseInt(el.dataset.count),isYear=target>1900,
 
 // ===== OBSERVER =====
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.dataset.count)countUp(e.target);io.unobserve(e.target);}});},{threshold:0});
-document.addEventListener('DOMContentLoaded',()=>{renderHub();document.querySelectorAll('.fade-in,[data-count]').forEach(el=>io.observe(el));});
+document.addEventListener('DOMContentLoaded',()=>{renderHub();document.querySelectorAll('.fade-in,[data-count]').forEach(el=>io.observe(el));const sy=sessionStorage.getItem('ymk_scrollY');if(sy){sessionStorage.removeItem('ymk_scrollY');setTimeout(()=>window.scrollTo({top:parseInt(sy),behavior:'instant'}),50);}});
 
 function switchDayJob(type,btn){
   document.querySelectorAll('.day-job-tab').forEach(b=>b.classList.remove('active'));
