@@ -378,7 +378,7 @@ const SNS_POSTS = {
   ig_rec_danjou:  { label:'内定者③檀上', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DYk5LmulOJ5/' },
   ig_rec_murakami:{ label:'内定者④村上', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DXf9hp9kx7y/' },
   ig_rec_showroom:{ label:'展示場紹介', cls:'ig', url:'https://www.instagram.com/yamaka.recruit/p/DR4DFtXErdE/' },
-  ig_qna_faq_new:  { label:'未経験FAQ', cls:'ig', url:'https://www.instagram.com/p/DZenY5Hk5lU/', badge:'おすすめ' },
+  ig_qna_faq_new:  { label:'未経験FAQ', cls:'ig', url:'https://www.instagram.com/p/DZenY5Hk5lU/', badge:'おすすめ', thumb:'./thumb-qna-faq-new.jpg' },
   ig_qna_faq_sel:  { label:'選考FAQ', cls:'ig', url:'https://www.instagram.com/p/DSuC5kNj0cg/' },
   ig_qna_faq_eval: { label:'評価制度FAQ', cls:'ig', url:'https://www.instagram.com/p/DQL3K07E20E/' },
   ig_jobs_sales_intv1: { label:'営業インタビュー①', cls:'ig', url:'https://www.instagram.com/reel/DR4AlpEE8TP/' },
@@ -641,9 +641,11 @@ function recThumbs(s){
   const rec=SNS_POSTS[recs[0]];
   const others=(s.snsPosts||[]).length-1;
   const ytId=rec.cls==='yt'?(rec.url.match(/[?&]v=([^&]+)/)?.[1]||rec.url.match(/\/shorts\/([^?&/]+)/)?.[1]):null;
-  const thumb=ytId
-    ?`<img class="hub-rec-img" src="https://img.youtube.com/vi/${ytId}/mqdefault.jpg" alt="">`
-    :`<div class="hub-rec-ig-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="white" fill-opacity=".25"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg></div>`;
+  const thumb=rec.thumb
+    ?`<img class="hub-rec-img" src="${rec.thumb}" alt="">`
+    :ytId
+      ?`<img class="hub-rec-img" src="https://img.youtube.com/vi/${ytId}/mqdefault.jpg" alt="">`
+      :`<div class="hub-rec-ig-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="white" fill-opacity=".25"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg></div>`;
   const typeLabel=rec.cls==='yt'?'おすすめ動画':'おすすめ投稿';
   const otherText=others>0?`<div class="hub-rec-other">他${others}件の関連コンテンツ</div>`:'';
   return `<div class="hub-rec-wrap"><a class="hub-rec-banner" href="${rec.url}" rel="noopener" onclick="event.preventDefault();event.stopPropagation();showBackHint(this.href)">${thumb}<div class="hub-rec-info"><div class="hub-rec-badge">★ ${typeLabel}</div><div class="hub-rec-name">${rec.label}</div></div></a>${otherText}</div>`;
